@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация нового звонка</title>
+</head>
+<body>
+<form action="#" th:action="@{/call/add}" th:object="${call}" method="post">
+    <label for="Destination">Исходящий</label>
+    <input type="checkbox" th:field="*{Destination}" th:checked="*{Destination}" id="Destination" placeholder="Направление" />
+    <label for="Number">Номер</label>
+    <input type="text" th:field="*{Number}" id="Number" placeholder="Номер" />
+    <p th:if="${#fields.hasErrors('Number')}" th:errors="*{Number}">номер не должен быть пустым</p>
+    <label for="Caller">Абонент</label>
+    <input type="text" th:field="*{Caller}" id="Caller" placeholder="Абонент" />
+    <label for="Operator">Оператор</label>
+    <input type="text" th:field="*{Operator}" id="Operator" placeholder="Оператор" />
+    <label for="CallDate">Дата звонка</label>
+    <input type="date" th:field="*{CallDate}" id="CallDate" placeholder="Дата звонка" />
+    <label for="Comment">Комментарий</label>
+    <input type="text" th:field="*{Comment}" id="Comment" placeholder="Комментарий" />
+    <input type="submit" value="Добавить">
+    <ul>
+        <li th:each="e : ${#fields.detailedErrors()}" th:class="${e.global}? globalerr : fielderr">
+            <span th:text="${e.global}? '*' : ${e.fieldName}">The field name</span> |
+            <span th:text="${e.message}">The error message</span>
+        </li>
+    </ul>
+</form>
+</body>
+</html>

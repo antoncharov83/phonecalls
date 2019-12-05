@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование звонка</title>
+</head>
+<body>
+<form action="#" th:action="@{/call/update/{id}(id=${call.Id})}" th:object="${call}" method="post">
+    <label for="Destination">Исходящий</label>
+    <input type="checkbox" th:field="*{Destination}" id="Destination" placeholder="Направление"  checked="${call.Destination}}">
+    <label for="Number">Номер</label>
+    <input type="text" th:field="*{Number}" id="Number" placeholder="Номер" value="${call.Number}}">
+    <label for="Caller">Абонент</label>
+    <input type="text" th:field="*{Caller}" id="Caller" placeholder="Абонент" value="${call.Caller}}">
+    <label for="Operator">Оператор</label>
+    <input type="text" th:field="*{Operator}" id="Operator" placeholder="Оператор" value="${call.Operator}}">
+    <label for="CallDate">Дата звонка</label>
+    <input type="date" th:field="*{CallDate}" id="CallDate" placeholder="Дата звонка" value="${call.CallDate}}">
+    <span th:if="${#fields.hasErrors('CallDate')}" th:errors="*{CallDate}"></span>
+    <label for="Comment">Комментарий</label>
+    <input type="text" th:field="*{Comment}" id="Comment" placeholder="Комментарий" value="${call.Comment}}">
+    <input type="submit" value="Сохранить">
+</form>
+</body>
+</html>

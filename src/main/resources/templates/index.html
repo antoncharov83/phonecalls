@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Данные о звонках</title>
+</head>
+<body>
+<div th:switch="${calls}">
+    <h2 th:case="null">Нет данных о звонках!</h2>
+    <div th:case="*">
+        <h2>Звонки</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Направление</th>
+                <th>Номер</th>
+                <th>Абонент</th>
+                <th>Оператор</th>
+                <th>Дата</th>
+                <th>Комментарий</th>
+                <th>Редактировать</th>
+                <th>Удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="call : ${calls}">
+                <td th:text="${call.Destination}?'исходящий':'входящий'"></td>
+                <td th:text="${call.Number}"></td>
+                <td th:text="${call.Caller}"></td>
+                <td th:text="${call.Operator}"></td>
+                <td th:text="${call.CallDate}"></td>
+                <td th:text="${call.Comment}"></td>
+                <td><a th:href="@{/call/update/{id}(id=${call.Id})}">Edit</a></td>
+                <td><a th:href="@{/call/delete/{id}(id=${call.Id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/call/add">Зарегистрировать новый звонок</a></p>
+    <p><a href="/call/stat">Статистика</a></p>
+</div>
+</body>
+</html>
