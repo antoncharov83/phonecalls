@@ -20,7 +20,7 @@ public class PhoneCall {
     private String Number;          //- номер телефона
     private String Caller;          //- ФИО абонента
     private String Operator;        //- ФИО оператора принявшего звонок
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date CallDate;          //- время и дата обработки звонка
     private String Comment;         //- комментарии с содержанием звонка
 

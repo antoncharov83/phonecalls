@@ -15,7 +15,7 @@
     <label for="Operator">Оператор</label>
     <input type="text" th:field="*{Operator}" id="Operator" placeholder="Оператор" value="${call.Operator}}">
     <label for="CallDate">Дата звонка</label>
-    <input type="date" th:field="*{CallDate}" id="CallDate" placeholder="Дата звонка" value="${call.CallDate}}">
+    <input type="datetime-local" th:field="*{CallDate}" id="CallDate" placeholder="Дата звонка" value="${call.CallDate}}">
     <span th:if="${#fields.hasErrors('CallDate')}" th:errors="*{CallDate}"></span>
     <label for="Comment">Комментарий</label>
     <input type="text" th:field="*{Comment}" id="Comment" placeholder="Комментарий" value="${call.Comment}}">

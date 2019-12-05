@@ -4,12 +4,14 @@ import com.antoncharov.statistics.model.PhoneCall;
 import com.antoncharov.statistics.model.PhoneCallStat;
 import com.antoncharov.statistics.service.PhoneCallService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = "/call")
@@ -72,5 +74,19 @@ public class MainController {
         Iterable<PhoneCallStat> calls = phoneCallService.getStat();
         model.addAttribute("calls", calls);
         return "stat-call";
+    }
+
+    @GetMapping("/statbydate")
+    public String showStatFormByDate(){
+        return "stat-call-by-date";
+    }
+
+    @PostMapping("/statbydate")
+    public String showStatFormByDate(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date start,
+                                     @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date end,
+                                     Model model){
+        Iterable<PhoneCallStat> calls = phoneCallService.getStatByDate(start, end);
+        model.addAttribute("calls", calls);
+        return "stat-call-by-date";
     }
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика за период</title>
+</head>
+<body>
+<form action="/call/statbydate" method="post">
+    <input type="datetime-local" name="start"/>
+    <input type="datetime-local" name="end"/>
+    <input type="submit" value="Поиск">
+</form>
+<div th:switch="${calls}">
+    <h2 th:case="null">Нет данных о звонках!</h2>
+    <div th:case="*">
+        <h2>Звонки</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Оператор</th>
+                <th>Направление</th>
+                <th>Количество</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="call : ${calls}">
+                <td th:text="${call.Caller}"></td>
+                <td th:text="${call.Destination}?'исходящий':'входящий'"></td>
+                <td th:text="${call.Count}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
