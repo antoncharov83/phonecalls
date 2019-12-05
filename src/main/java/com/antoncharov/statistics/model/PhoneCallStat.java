@@ -1,7 +1,7 @@
 package com.antoncharov.statistics.model;
 
 public class PhoneCallStat {
-    private Boolean Destination;    //- направление звонка(Входящий/Исходящий)
+    private Boolean Destination;
     private String Caller;
     private Long Count;
 

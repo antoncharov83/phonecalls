@@ -5,12 +5,11 @@
     <title>Регистрация нового звонка</title>
 </head>
 <body>
-<form action="#" th:action="@{/call/add}" th:object="${call}" method="post">
+<form action="#" th:action="@{/call/add}" th:object="${phoneCall}" method="post">
     <label for="Destination">Исходящий</label>
     <input type="checkbox" th:field="*{Destination}" th:checked="*{Destination}" id="Destination" placeholder="Направление" />
     <label for="Number">Номер</label>
     <input type="text" th:field="*{Number}" id="Number" placeholder="Номер" />
-    <p th:if="${#fields.hasErrors('Number')}" th:errors="*{Number}">номер не должен быть пустым</p>
     <label for="Caller">Абонент</label>
     <input type="text" th:field="*{Caller}" id="Caller" placeholder="Абонент" />
     <label for="Operator">Оператор</label>
@@ -27,5 +26,6 @@
         </li>
     </ul>
 </form>
+<a href="/">На главную</a>
 </body>
 </html>

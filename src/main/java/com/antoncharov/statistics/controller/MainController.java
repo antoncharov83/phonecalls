@@ -23,14 +23,14 @@ public class MainController {
     @GetMapping(value = "/add")
     public String showAddForm(Model model){
         PhoneCall call = new PhoneCall();
-        model.addAttribute("call", call);
+        model.addAttribute("phoneCall", call);
         return "add-call";
     }
 
     @PostMapping(value = "/add")
     public String addCall(@Valid PhoneCall call, BindingResult result, Model model){
         if (result.hasErrors()) {
-            model.addAttribute("call", call);
+            model.addAttribute("phoneCall", call);
             return "add-call";
         }
         phoneCallService.save(call);
@@ -43,7 +43,7 @@ public class MainController {
         PhoneCall call = phoneCallService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid call Id:" + id));
 
-        model.addAttribute("call", call);
+        model.addAttribute("phoneCall", call);
         return "update-call";
     }
 
@@ -51,7 +51,7 @@ public class MainController {
     public String updateCall(@PathVariable("id") long id, @Valid PhoneCall call,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("call", call);
+            model.addAttribute("phoneCall", call);
             return "update-call";
         }
 

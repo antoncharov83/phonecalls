@@ -5,21 +5,27 @@
     <title>Редактирование звонка</title>
 </head>
 <body>
-<form action="#" th:action="@{/call/update/{id}(id=${call.Id})}" th:object="${call}" method="post">
+<form action="#" th:action="@{/call/update/{id}(id=*{Id})}" th:object="${phoneCall}" method="post">
     <label for="Destination">Исходящий</label>
-    <input type="checkbox" th:field="*{Destination}" id="Destination" placeholder="Направление"  checked="${call.Destination}}">
+    <input type="checkbox" th:field="*{Destination}" id="Destination" placeholder="Направление"  checked="*{Destination}}">
     <label for="Number">Номер</label>
-    <input type="text" th:field="*{Number}" id="Number" placeholder="Номер" value="${call.Number}}">
+    <input type="text" th:field="*{Number}" id="Number" placeholder="Номер" value="*{Number}}">
     <label for="Caller">Абонент</label>
-    <input type="text" th:field="*{Caller}" id="Caller" placeholder="Абонент" value="${call.Caller}}">
+    <input type="text" th:field="*{Caller}" id="Caller" placeholder="Абонент" value="*{Caller}}">
     <label for="Operator">Оператор</label>
-    <input type="text" th:field="*{Operator}" id="Operator" placeholder="Оператор" value="${call.Operator}}">
+    <input type="text" th:field="*{Operator}" id="Operator" placeholder="Оператор" value="*{Operator}}">
     <label for="CallDate">Дата звонка</label>
-    <input type="datetime-local" th:field="*{CallDate}" id="CallDate" placeholder="Дата звонка" value="${call.CallDate}}">
-    <span th:if="${#fields.hasErrors('CallDate')}" th:errors="*{CallDate}"></span>
+    <input type="datetime-local" th:field="*{CallDate}" id="CallDate" placeholder="Дата звонка" value="*{CallDate}}">
     <label for="Comment">Комментарий</label>
-    <input type="text" th:field="*{Comment}" id="Comment" placeholder="Комментарий" value="${call.Comment}}">
+    <input type="text" th:field="*{Comment}" id="Comment" placeholder="Комментарий" value="*{Comment}}">
     <input type="submit" value="Сохранить">
+    <ul>
+        <li th:each="e : ${#fields.detailedErrors()}" th:class="${e.global}? globalerr : fielderr">
+            <span th:text="${e.global}? '*' : ${e.fieldName}">The field name</span> |
+            <span th:text="${e.message}">The error message</span>
+        </li>
+    </ul>
 </form>
+<a href="/">На главную</a>
 </body>
 </html>
