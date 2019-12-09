@@ -5,7 +5,7 @@
     <title>Регистрация нового звонка</title>
 </head>
 <body>
-<form action="#" th:action="@{/call/add}" th:object="${phoneCall}" method="post">
+<form action="#" th:action="@{/add}" th:object="${phoneCall}" method="post">
     <label for="Destination">Исходящий</label>
     <input type="checkbox" th:field="*{Destination}" th:checked="*{Destination}" id="Destination" placeholder="Направление" />
     <label for="Number">Номер</label>

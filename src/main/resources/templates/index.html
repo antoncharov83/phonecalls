@@ -30,15 +30,15 @@
                 <td th:text="${call.Operator}"></td>
                 <td th:text="${call.CallDate}"></td>
                 <td th:text="${call.Comment}"></td>
-                <td><a th:href="@{/call/update/{id}(id=${call.Id})}">Edit</a></td>
-                <td><a th:href="@{/call/delete/{id}(id=${call.Id})}">Delete</a></td>
+                <td><a th:href="@{/update/{id}(id=${call.Id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${call.Id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/call/add">Зарегистрировать новый звонок</a></p>
-    <p><a href="/call/stat">Статистика за все время</a></p>
-    <p><a href="/call/statbydate">Статистика за выбранный период</a></p>
+    <p><a href="/add">Зарегистрировать новый звонок</a></p>
+    <p><a href="/stat">Статистика за все время</a></p>
+    <p><a href="/statbydate">Статистика за выбранный период</a></p>
 </div>
 </body>
 </html>

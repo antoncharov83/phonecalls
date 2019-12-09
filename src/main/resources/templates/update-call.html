@@ -5,7 +5,7 @@
     <title>Редактирование звонка</title>
 </head>
 <body>
-<form action="#" th:action="@{/call/update/{id}(id=*{Id})}" th:object="${phoneCall}" method="post">
+<form action="#" th:action="@{/update/{id}(id=*{Id})}" th:object="${phoneCall}" method="post">
     <label for="Destination">Исходящий</label>
     <input type="checkbox" th:field="*{Destination}" id="Destination" placeholder="Направление"  checked="*{Destination}}">
     <label for="Number">Номер</label>
